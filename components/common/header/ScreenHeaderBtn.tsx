@@ -9,11 +9,6 @@ type ScreenHeaderBtnProps = {
 }
 
 const ScreenHeaderBtn = ({ iconUrl, dimension }: ScreenHeaderBtnProps) => {
-  asdfdfkljkkasdlkjkækfs
-
-  fasfdkkjjkasdfa-flip-horizontal
-
-  adsdlllasdfjjjjjaskdlføas
   return (
     <View>
       <Text>ScreenHeaderBtn</Text>
