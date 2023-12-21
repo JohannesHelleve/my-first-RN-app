@@ -1,11 +1,16 @@
-import { StyleSheet, TextStyle, ViewStyle } from "react-native";
+import { StyleSheet, ImageStyle, ViewStyle } from "react-native";
 
 import { COLORS, SIZES } from "../../../constants";
 
-interface Styles {
+type Styles = {
   btnContainer: ViewStyle;
-  btnImg: (dimension: number) => TextStyle;
 }
+
+const btnImg = (dimension: string): ImageStyle => ({
+  width: dimension as any,
+  height: dimension as any,
+  borderRadius: SIZES.small / 1.25,
+});
 
 const styles: Styles = StyleSheet.create({
   btnContainer: {
@@ -16,11 +21,7 @@ const styles: Styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  btnImg: (dimension: number) => ({
-    width: dimension,
-    height: dimension,
-    borderRadius: SIZES.small / 1.25,
-  }),
 });
 
-export default styles;
+export { styles, btnImg };
+
