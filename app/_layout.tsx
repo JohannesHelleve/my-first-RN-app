@@ -12,15 +12,11 @@ const Layout = () => {
         DMRegular : require('../assets/fonts/DMSans-Regular.ttf'),
     });
 
-    const onLayoutRootView = useCallback(async () => {
+    useEffect(() => {
         if (fontsLoaded) {
-            await SplashScreen.hideAsync();
+            SplashScreen.hideAsync();
         }
     }, [fontsLoaded]);
-
-    useEffect(() => {
-        onLayoutRootView();
-    }, [onLayoutRootView]);
 
     if (!fontsLoaded) {
         return null;
@@ -30,3 +26,4 @@ const Layout = () => {
 };
 
 export default Layout;
+
