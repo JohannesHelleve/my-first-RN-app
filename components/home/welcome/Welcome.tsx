@@ -9,6 +9,7 @@ const jobTypes = ["Fulltid", "Deltid", "Intern"]
 
 const Welcome = () => {
   const router = useRouter()
+  const [activeJobType, setActiveJobType] = useState(jobTypes[0])
 
   return (
     <View>
@@ -34,8 +35,22 @@ const Welcome = () => {
         </TouchableOpacity>
       </View>
       <View style={styles.tabsContainer} >
-        <FlatList  
+        <FlatList
           data={jobTypes}
+          renderItem={({ item }) => (
+            <TouchableOpacity
+              style={tab(activeJobType, item)}
+              onPress={() => {
+                setActiveJobType(item);
+                router.push('/search/${item}')
+              }}
+            >
+              <Text style={tabText(activeJobType, item)}>{item}</Text>
+            </TouchableOpacity>
+          )} 
+          keyExtractor={item => item}
+          contentContainerStyle={{columnGap: SIZES.small}}
+          horizontal
         />
       </View>
     </View>
