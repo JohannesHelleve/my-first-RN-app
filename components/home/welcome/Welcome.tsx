@@ -2,7 +2,7 @@ import { useState} from 'react'
 import { View, Text, TextInput, TouchableOpacity, Image, FlatList } from 'react-native'
 import { useRouter } from 'expo-router'
 
-import { styles, tab, tabText } from './welcome.style'
+import  styles  from './welcome.style'
 import { icons, SIZES } from '../../../constants' 
 
 const jobTypes = ["Fulltid", "Deltid", "Intern"]
@@ -10,6 +10,8 @@ const jobTypes = ["Fulltid", "Deltid", "Intern"]
 const Welcome = () => {
   const router = useRouter()
   const [activeJobType, setActiveJobType] = useState(jobTypes[0])
+
+  const styleWithProps = styles(activeJobType, item)
 
   return (
     <View>
@@ -39,13 +41,13 @@ const Welcome = () => {
           data={jobTypes}
           renderItem={({ item }) => (
             <TouchableOpacity
-              style={tab(activeJobType, item)}
+              style={styles.tab(activeJobType, item)}
               onPress={() => {
                 setActiveJobType(item);
                 router.push('/search/${item}')
               }}
             >
-              <Text style={tabText(activeJobType, item)}>{item}</Text>
+              <Text style={styles.tabText(activeJobType, item)}>{item}</Text>
             </TouchableOpacity>
           )} 
           keyExtractor={item => item}
