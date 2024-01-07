@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 import { COLORS, FONT, SIZES } from "../../../constants";
 
-const styles = (activeJobType : string, item : string) => StyleSheet.create({
+const styles = (activeJobType : string, item? : string) => StyleSheet.create({
   container: {
     width: "100%",
   },

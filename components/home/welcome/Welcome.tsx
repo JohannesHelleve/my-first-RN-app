@@ -11,43 +11,44 @@ const Welcome = () => {
   const router = useRouter()
   const [activeJobType, setActiveJobType] = useState(jobTypes[0])
 
-  const styleWithProps = styles(activeJobType, item)
+  const styleWithProps = styles(activeJobType)
 
   return (
     <View>
-      <View style={styles.container}>
-        <Text style={styles.userName}>Halla sjef!</Text>
-        <Text style={styles.welcomeMessage}>Velkommen tilbake til din personlige side</Text>
+      <View style={styleWithProps.container}>
+        <Text style={styleWithProps.userName}>Halla sjef!</Text>
+        <Text style={styleWithProps.welcomeMessage}>Velkommen tilbake til din personlige side</Text>
       </View>
-      <View style={styles.searchContainer}>
-        <View style={styles.searchWrapper}>
+      <View style={styleWithProps.searchContainer}>
+        <View style={styleWithProps.searchWrapper}>
           <TextInput
-            style={styles.searchInput}
+            style={styleWithProps.searchInput}
             value=""
             onChange={() => {}}
             placeholder="Søk etter en jobb"
           />
         </View>
-        <TouchableOpacity style={styles.searchBtn} onPress={() => {}}>
+        <TouchableOpacity style={styleWithProps.searchBtn} onPress={() => {}}>
           <Image
             source={icons.search}
             resizeMode="contain"
-            style={styles.searchBtnImage}
+            style={styleWithProps.searchBtnImage}
           />
         </TouchableOpacity>
       </View>
-      <View style={styles.tabsContainer} >
+      <View style={styleWithProps.tabsContainer} >
         <FlatList
           data={jobTypes}
           renderItem={({ item }) => (
             <TouchableOpacity
-              style={styles.tab(activeJobType, item)}
+              //item was not in the scope so the stylesheet is conditional. Takes 1 or 2 arguments
+              style={styles(activeJobType, item).tab}
               onPress={() => {
                 setActiveJobType(item);
                 router.push('/search/${item}')
               }}
             >
-              <Text style={styles.tabText(activeJobType, item)}>{item}</Text>
+              <Text style={styleWithProps.tabText}>{item}</Text>
             </TouchableOpacity>
           )} 
           keyExtractor={item => item}
