@@ -1,8 +1,9 @@
-import { Text } from 'react-native'
-function JobDetails = () => {
+ import { Text } from 'react-native'
+
+const JobDetails = () => {
   return (
-    <Text>JobDetails </Text>
-  ) 
+    <Text>Job Details</Text>
+  )
 }
 
-export default JobDetails 
+export default JobDetails
